@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@cakes-ltd/api-interfaces';
+import { Cake } from '@cakes-ltd/api-interfaces';
 
 @Component({
   selector: 'cakes-ltd-root',
@@ -8,6 +8,6 @@ import { Message } from '@cakes-ltd/api-interfaces';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
+  hello$ = this.http.get<Cake>('/api/hello');
   constructor(private http: HttpClient) {}
 }
