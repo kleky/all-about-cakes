@@ -2,7 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 
 import { CakesController } from './cakes.controller';
 import { CakesService } from './cakes.service';
-import { Cake } from '@cakes-ltd/api-interfaces';
+import { ICake } from '@cakes-ltd/api-interfaces';
+import { DbService } from './db.service';
 
 describe('CakesController', () => {
   let app: TestingModule;
@@ -10,7 +11,7 @@ describe('CakesController', () => {
   beforeAll(async () => {
     app = await Test.createTestingModule({
       controllers: [CakesController],
-      providers: [CakesService]
+      providers: [CakesService, DbService]
     }).compile();
   });
 
@@ -18,7 +19,7 @@ describe('CakesController', () => {
     it('should return array of type Cake', () => {
       const appController = app.get<CakesController>(CakesController);
       const cakesService = app.get<CakesService>(CakesService);
-      const expectedCakes: Cake[] = [{
+      const expectedCakes: ICake[] = [{
         id: 1,
         name: "Cake",
         comment: "Comment",

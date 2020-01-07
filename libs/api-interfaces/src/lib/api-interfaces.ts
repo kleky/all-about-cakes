@@ -1,4 +1,4 @@
-export interface Cake {
+export interface ICake {
   id: number;
   name: string;
   comment: string;

@@ -1,24 +1,44 @@
 import { Injectable } from '@nestjs/common';
-import { Cake } from '@cakes-ltd/api-interfaces';
+import { DbService } from './db.service';
+import { Cake } from './cake.entity';
+import { ICake } from '@cakes-ltd/api-interfaces';
 
 @Injectable()
 export class CakesService {
-  getCakes(): Cake[] {
-    const cakes = [];
-    for (let i = 1; i <= 10; i++) {
-      cakes.push(this.generateCake(i));
-    }
-    return cakes;
+
+  constructor(private readonly db: DbService) {
+    const cakes: Cake[] = [];
+
+    this.db.connection.then(async conn => {
+
+      const repo = conn.getRepository(Cake);
+      const count = await repo.count();
+
+      // seed with initial data
+      if(count === 0) {
+        for (let i = 1; i <= 10; i++) {
+          cakes.push(repo.create({
+            name: `Cake ${i}`,
+            comment: `Comment ${i}`,
+            imageUrl: `..\\assets\\images\\cakes\\${i}.jpg`,
+            yumFactor: i
+          }))
+        }
+        repo.save(cakes)
+          .then(e => console.log('Saved cakes', e))
+          .catch(e => console.error('Error saving cakes', e));
+      }
+
+    });
   }
 
-  private generateCake(index: number): Cake {
-    return {
-      id: index,
-      name: `Cake ${index}`,
-      comment: `Comment ${index}`,
-      imageUrl: `..\\assets\\images\\cakes\\${index}.jpg`,
-      yumFactor: index,
-    };
+  async getCakes(): Promise<ICake[]> {
+    const conn = await this.db.connection;
+
+    const repo = await conn.manager.getRepository(Cake);
+    return repo.createQueryBuilder('cakes')
+      .getMany();
   }
 
 }
+
