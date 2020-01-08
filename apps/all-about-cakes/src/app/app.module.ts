@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
-import { DataStoreModule } from './store/data-store.module';
+import { CakesModule } from './cakes/cakes.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -12,7 +12,7 @@ import { DataStoreModule } from './store/data-store.module';
     BrowserModule,
     HttpClientModule,
     CoreModule,
-    DataStoreModule,
+    CakesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

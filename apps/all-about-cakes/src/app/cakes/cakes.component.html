@@ -1,0 +1,6 @@
+<ul id="cake-list">
+  <li *ngFor=" let cake of cakes$ | async">
+    <b>Image:</b> {{ cake.imageUrl }}
+    <b>Name:</b> {{ cake.name }}
+  </li>
+</ul>
