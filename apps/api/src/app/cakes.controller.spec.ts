@@ -12,7 +12,12 @@ describe('CakesController', () => {
   beforeAll(async () => {
     app = await Test.createTestingModule({
       controllers: [CakesController],
-      providers: [CakesService]
+      providers: [
+        {
+          provide: CakesService,
+          useValue: { getCakes: jest.fn() },
+        }
+      ]
     }).compile();
 
     appController = app.get<CakesController>(CakesController);
@@ -29,10 +34,11 @@ describe('CakesController', () => {
         imageUrl: '..\\assets\\images\\cakes\\1.jpg',
         yumFactor: 10
       }];
-      jest.spyOn(cakesService, 'getCakes')
-        .mockResolvedValue(expectedCakes);
+      cakesService.getCakes = jest.fn().mockResolvedValue(expectedCakes);
 
-      expect(appController.getCakes()).toEqual(expectedCakes);
+      const result = await appController.getCakes();
+
+      expect(result).toEqual(expectedCakes);
     });
   });
 });
