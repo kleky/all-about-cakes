@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Connection, ConnectionOptions, createConnection} from 'typeorm';
-import { Cake } from './cake.entity';
+import { Cake } from '../../../../libs/entities/cake.entity';
 
 @Injectable({
   providedIn: 'root'

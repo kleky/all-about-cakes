@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ICake } from '@cakes-ltd/api-interfaces';
+import { CakeService } from './cake.service';
+import { Observable } from 'rxjs';
+import { Cake } from '../../../../libs/entities/cake.entity';
 
 @Component({
   selector: 'cakes-ltd-root',
@@ -8,6 +9,12 @@ import { ICake } from '@cakes-ltd/api-interfaces';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  hello$ = this.http.get<ICake>('/api/hello');
-  constructor(private http: HttpClient) {}
+
+  cakes$: Observable<Cake[]>;
+
+  constructor(private cakeService: CakeService) {
+
+    cakeService.getAll().subscribe(d => console.log("DATA", d));
+
+  }
 }
