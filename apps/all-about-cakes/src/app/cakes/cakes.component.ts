@@ -3,6 +3,7 @@ import { CakeService } from './cake.service';
 import { Cake } from '../../../../../libs/entities/cake.entity';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { ICake } from '@cakes-ltd/api-interfaces';
 
 @Component({
   selector: 'aac-cakes',
@@ -11,7 +12,7 @@ import { tap } from 'rxjs/operators';
 })
 export class CakesComponent implements OnInit {
 
-  cakes$: Observable<Cake[]>;
+  cakes$: Observable<ICake[]>;
 
   constructor(private cakeService: CakeService) {
 

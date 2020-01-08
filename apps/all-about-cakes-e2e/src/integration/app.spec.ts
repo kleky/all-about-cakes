@@ -10,6 +10,6 @@ describe('all-about-cakes', () => {
   it('should list all cakes', () => {
 
     // Function helper example, see `../support/app.po.ts` file
-    // getAllCakes().;
+    console.log("IKD", getAllCakes());
   });
 });

@@ -1,25 +1,33 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Spectator, createComponentFactory, mockProvider } from '@ngneat/spectator/jest';
 import { CakesComponent } from './cakes.component';
+import { CakeService } from './cake.service';
+import { of } from 'rxjs';
+import { ICake } from '@cakes-ltd/api-interfaces';
 
 describe('CakesComponent', () => {
-  let component: CakesComponent;
-  let fixture: ComponentFixture<CakesComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CakesComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CakesComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  let spectator: Spectator<CakesComponent>;
+  const cakes: ICake[] = [{
+    id: 1,
+    imageUrl: 'url',
+    name: 'name',
+    comment: 'comment',
+    yumFactor: 10
+  }]
+  const createComponent = createComponentFactory({
+    component: CakesComponent,
+    providers: [mockProvider(CakeService, { getAll: () => of(cakes)})]
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  beforeEach(() => spectator = createComponent());
+
+  it('should be truthy', () => {
+    expect(spectator.component).toBeTruthy();
   });
+
+  it('should load cakes from data store', () => {
+    spectator.component.cakes$.subscribe(c => {
+      expect(c).toEqual(cakes);
+    });
+  });
+
 });

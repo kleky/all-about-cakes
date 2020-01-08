@@ -60,6 +60,7 @@
     "@angular/language-service": "^8.2.0",
     "@nestjs/schematics": "^6.7.0",
     "@nestjs/testing": "^6.8.3",
+    "@ngneat/spectator": "^4.11.0",
     "@nrwl/cypress": "8.10.0",
     "@nrwl/jest": "8.10.0",
     "@nrwl/nest": "8.10.0",
