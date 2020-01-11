@@ -4,6 +4,7 @@ import { CakesComponent } from './cakes.component';
 import { DataStoreModule } from '../store/data-store.module';
 import { AddCakeComponent } from './add-cake/add-cake.component';
 import { CakesRoutingModule } from './cakes-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [CakesComponent, AddCakeComponent],
@@ -11,6 +12,7 @@ import { CakesRoutingModule } from './cakes-routing.module';
     CommonModule,
     DataStoreModule,
     CakesRoutingModule,
+    FormsModule
   ],
   exports: [
     CakesComponent,

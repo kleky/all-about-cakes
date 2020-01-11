@@ -12,4 +12,4 @@ const appRoutes: Routes = [
     RouterModule
   ]
 })
-export class HeroesRoutingModule { }
+export class AppRoutingModule { }
