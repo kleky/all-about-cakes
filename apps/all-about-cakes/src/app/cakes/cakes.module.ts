@@ -12,9 +12,9 @@ import { CakesRoutingModule } from './cakes-routing.module';
     DataStoreModule,
     CakesRoutingModule,
   ],
-  entryComponents: [ AddCakeComponent ],
   exports: [
     CakesComponent,
+    AddCakeComponent,
   ]
 })
 export class CakesModule { }

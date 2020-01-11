@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CakeService } from '../cake.service';
+import { Cake } from '@cakes-ltd/api-interfaces';
 
 @Component({
   selector: 'aac-add-cake',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddCakeComponent implements OnInit {
 
-  constructor() { }
+  newCake: Cake;
+
+  constructor(private cakeService: CakeService) {
+    this.newCake = {name: "NEW", comment: "commenty", imageUrl: "url", id: null, yumFactor: 9};
+  }
 
   ngOnInit() {
+  }
+
+  save() {
+    this.cakeService.add(this.newCake);
   }
 
 }

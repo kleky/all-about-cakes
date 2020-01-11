@@ -1,25 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Spectator, createComponentFactory } from '@ngneat/spectator/jest';
 import { AddCakeComponent } from './add-cake.component';
+import { CakeService } from '../cake.service';
 
-describe('AddCakeComponent', () => {
-  let component: AddCakeComponent;
-  let fixture: ComponentFixture<AddCakeComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AddCakeComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AddCakeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+describe('CakesComponent', () => {
+  let spectator: Spectator<AddCakeComponent>;
+  const createComponent = createComponentFactory({
+    component: AddCakeComponent,
+    mocks: [CakeService]
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  beforeEach(() => spectator = createComponent());
+
+  it('should be truthy', () => {
+    expect(spectator.component).toBeTruthy();
   });
+
 });
