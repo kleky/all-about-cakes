@@ -1,6 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Connection, ConnectionOptions, createConnection} from 'typeorm';
+import { Injectable } from '@angular/core';
+import { Connection, ConnectionOptions, createConnection } from 'typeorm';
 import { CakeEntity } from '../../../../libs/entities/cake.entity';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,34 +14,37 @@ export class DbService {
   constructor() {
     this.options = {
       type: 'sqlite',
-      database: "aac-db",
+      database: 'aac-db',
       entities: [CakeEntity],
       synchronize: true,
-      logging: 'all',
+      logging: 'all'
     };
     this.connection = createConnection(this.options);
 
-    const cakes: CakeEntity[] = [];
-    this.connection.then(async conn => {
+    if (environment.production === false) {
+      const cakes: CakeEntity[] = [];
+      this.connection.then(async conn => {
 
-      const repo = conn.getRepository(CakeEntity);
-      const count = await repo.count();
+        const repo = conn.getRepository(CakeEntity);
+        const count = await repo.count();
 
-      // seed with initial data
-      if(count === 0) {
-        for (let i = 1; i <= 10; i++) {
-          cakes.push(repo.create({
-            name: `Cake ${i}`,
-            comment: `Comment ${i}`,
-            imageUrl: `..\\assets\\images\\cakes\\${i}.jpg`,
-            yumFactor: i
-          }))
+        // seed with initial data
+        if (count === 0) {
+          for (let i = 1; i <= 10; i++) {
+            cakes.push(repo.create({
+              name: `Cake ${i}`,
+              comment: `Comment ${i}`,
+              imageUrl: `..\\assets\\images\\cakes\\${i}.jpg`,
+              yumFactor: i
+            }));
+          }
+          repo.save(cakes)
+            .then(e => console.log('Saved cakes', e))
+            .catch(e => console.error('Error saving cakes', e));
         }
-        repo.save(cakes)
-          .then(e => console.log('Saved cakes', e))
-          .catch(e => console.error('Error saving cakes', e));
-      }
 
-    });
+      });
+    }
+
   }
 }
