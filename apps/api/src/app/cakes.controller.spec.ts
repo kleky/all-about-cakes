@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 
 import { CakesController } from './cakes.controller';
 import { CakesService } from './cakes.service';
-import { ICake } from '@cakes-ltd/api-interfaces';
+import { Cake } from '@cakes-ltd/api-interfaces';
 
 describe('CakesController', () => {
   let app: TestingModule;
@@ -27,7 +27,7 @@ describe('CakesController', () => {
   describe('getCakes', () => {
     it('should return array of type Cake', async () => {
 
-      const expectedCakes: ICake[] = [{
+      const expectedCakes: Cake[] = [{
         id: 1,
         name: 'Cake',
         comment: 'Comment',

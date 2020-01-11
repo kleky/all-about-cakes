@@ -2,7 +2,7 @@ import { Test } from '@nestjs/testing';
 
 import { CakesService } from './cakes.service';
 import { CakesRepository } from '../aac-db/repositories/cakes.repository';
-import { DbService } from './db.service';
+import { DbService } from '../aac-db/db.service';
 
 describe('CakesService', () => {
   let service: CakesService;

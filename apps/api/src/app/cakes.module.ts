@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CakesController } from './cakes.controller';
 import { CakesService } from './cakes.service';
-import { DbService } from './db.service';
+import { DbService } from '../aac-db/db.service';
 import { CakesRepository } from '../aac-db/repositories/cakes.repository';
 
 @Module({

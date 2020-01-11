@@ -2,11 +2,11 @@ import { Spectator, createComponentFactory, mockProvider } from '@ngneat/spectat
 import { CakesComponent } from './cakes.component';
 import { CakeService } from './cake.service';
 import { of } from 'rxjs';
-import { ICake } from '@cakes-ltd/api-interfaces';
+import { Cake } from '@cakes-ltd/api-interfaces';
 
 describe('CakesComponent', () => {
   let spectator: Spectator<CakesComponent>;
-  const cakes: ICake[] = [{
+  const cakes: Cake[] = [{
     id: 1,
     imageUrl: 'url',
     name: 'name',

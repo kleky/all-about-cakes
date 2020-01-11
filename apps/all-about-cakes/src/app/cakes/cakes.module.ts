@@ -15,7 +15,6 @@ import { CakesRoutingModule } from './cakes-routing.module';
   entryComponents: [ AddCakeComponent ],
   exports: [
     CakesComponent,
-    AddCakeComponent,
   ]
 })
 export class CakesModule { }

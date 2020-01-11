@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Connection, ConnectionOptions, createConnection} from 'typeorm';
-import { Cake } from '../../../../libs/entities/cake.entity';
+import { CakeEntity } from '../../../../libs/entities/cake.entity';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +14,16 @@ export class DbService {
     this.options = {
       type: 'sqlite',
       database: "aac-db",
-      entities: [Cake],
+      entities: [CakeEntity],
       synchronize: true,
       logging: 'all',
     };
     this.connection = createConnection(this.options);
 
-    const cakes: Cake[] = [];
+    const cakes: CakeEntity[] = [];
     this.connection.then(async conn => {
 
-      const repo = conn.getRepository(Cake);
+      const repo = conn.getRepository(CakeEntity);
       const count = await repo.count();
 
       // seed with initial data

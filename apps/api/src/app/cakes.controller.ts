@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { CakesService } from './cakes.service';
-import { ICake } from '@cakes-ltd/api-interfaces';
+import { Cake } from '@cakes-ltd/api-interfaces';
 
 @Controller()
 export class CakesController {
@@ -9,7 +9,7 @@ export class CakesController {
   }
 
   @Get('cakes')
-  getCakes(): Promise<ICake[]> {
+  getCakes(): Promise<Cake[]> {
     return this.cakesService.getCakes();
   }
 }

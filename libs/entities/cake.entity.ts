@@ -1,8 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
-import { ICake } from '@cakes-ltd/api-interfaces';
+import { Cake } from '@cakes-ltd/api-interfaces';
 
 @Entity({name: 'cakes'})
-export class Cake extends BaseEntity implements ICake {
+export class CakeEntity extends BaseEntity implements Cake {
 
   @PrimaryGeneratedColumn()
   id: number;

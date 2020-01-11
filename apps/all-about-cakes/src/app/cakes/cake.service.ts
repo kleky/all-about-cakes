@@ -3,7 +3,7 @@ import {
   EntityCollectionServiceBase,
   EntityCollectionServiceElementsFactory
 } from '@ngrx/data';
-import { Cake } from '../../../../../libs/entities/cake.entity';
+import { Cake } from '@cakes-ltd/api-interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class CakeService extends EntityCollectionServiceBase<Cake> {
