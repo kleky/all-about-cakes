@@ -3,8 +3,9 @@
 
 <ul id="cake-list">
   <li *ngFor=" let cake of cakes$ | async">
-    <b>Image:</b> {{ cake.imageUrl }}
+    <span class="cake-image"> {{ cake.imageUrl }}</span>
     <b>Name:</b> {{ cake.name }}
+    <button routerLink="/details/{{cake.id}}">Details</button>
   </li>
 </ul>
 
