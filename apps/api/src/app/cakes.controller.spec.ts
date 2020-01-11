@@ -18,6 +18,7 @@ describe('CakesController', () => {
           useValue: {
             getCakes: jest.fn(),
             createCake: jest.fn(),
+            getCake: jest.fn(),
           },
         }
       ]
@@ -58,6 +59,17 @@ describe('CakesController', () => {
       });
 
       expect(cakesService.createCake).toHaveBeenCalled();
+
+    });
+  });
+
+  describe('getCake', () => {
+    it('should call CakeService getCake', async () => {
+      jest.spyOn(cakesService, 'getCake');
+
+      await appController.getCake(1);
+
+      expect(cakesService.getCake).toHaveBeenCalledWith(1);
 
     });
   });

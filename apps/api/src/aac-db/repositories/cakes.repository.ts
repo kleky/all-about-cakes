@@ -22,4 +22,10 @@ export class CakesRepository {
     const newCake = repo.create(cake);
     return repo.insert(newCake);
   }
+
+  async get(id: number): Promise<Cake> {
+    const conn = await this.db.connection;
+    const repo = await conn.manager.getRepository(CakeEntity);
+    return repo.findOneOrFail(id);
+  }
 }

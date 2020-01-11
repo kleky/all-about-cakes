@@ -17,5 +17,8 @@ export class CakesService {
     return this.cakesRepo.create(cake);
   }
 
+  async getCake(id: number): Promise<Cake> {
+    return this.cakesRepo.get(id);
+  }
 }
 
