@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CakesModule } from './cakes/cakes.module';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent },
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
     ),
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     CakesModule,
   ],
   providers: [],

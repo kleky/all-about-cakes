@@ -15,7 +15,10 @@ describe('CakesController', () => {
       providers: [
         {
           provide: CakesService,
-          useValue: { getCakes: jest.fn() },
+          useValue: {
+            getCakes: jest.fn(),
+            createCake: jest.fn(),
+          },
         }
       ]
     }).compile();
@@ -41,4 +44,22 @@ describe('CakesController', () => {
       expect(result).toEqual(expectedCakes);
     });
   });
+
+  describe('createCake', () => {
+    it('should call CakeService Create', async () => {
+      jest.spyOn(cakesService, 'createCake');
+
+      await appController.createCake({
+        id: 1,
+        name: 'Cake',
+        comment: 'Comment',
+        imageUrl: '..\\assets\\images\\cakes\\1.jpg',
+        yumFactor: 10
+      });
+
+      expect(cakesService.createCake).toHaveBeenCalled();
+
+    });
+  });
+
 });

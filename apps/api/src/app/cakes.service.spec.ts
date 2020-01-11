@@ -3,6 +3,7 @@ import { Test } from '@nestjs/testing';
 import { CakesService } from './cakes.service';
 import { CakesRepository } from '../aac-db/repositories/cakes.repository';
 import { DbService } from '../aac-db/db.service';
+import { InsertResult } from 'typeorm';
 
 describe('CakesService', () => {
   let service: CakesService;
@@ -34,6 +35,30 @@ describe('CakesService', () => {
       const result = await service.getCakes();
 
       expect(result).toEqual(expectedCakes);
+
+    });
+
+  });
+
+  describe('createCake', () => {
+
+    it('should return an Insert Result', async () => {
+      const expectedResult: InsertResult = {
+        "identifiers": [ { "id": 1 } ],
+        "generatedMaps": [ { "id": 1 } ],
+        "raw": 1
+      };
+      jest.spyOn(cakesRepo, 'create').mockResolvedValue(expectedResult);
+
+      const result = await service.createCake({
+        id: null,
+        name: 'Cake',
+        comment: 'Comment',
+        imageUrl: '..\\assets\\images\\cakes\\1.jpg',
+        yumFactor: 10
+      });
+
+      expect(result).toEqual(expectedResult);
 
     });
 

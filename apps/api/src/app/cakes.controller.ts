@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CakesService } from './cakes.service';
 import { Cake } from '@cakes-ltd/api-interfaces';
 
@@ -9,7 +9,12 @@ export class CakesController {
   }
 
   @Get('cakes')
-  getCakes(): Promise<Cake[]> {
-    return this.cakesService.getCakes();
+  async getCakes(): Promise<Cake[]> {
+    return await this.cakesService.getCakes();
+  }
+
+  @Post('cakes')
+  async createCake(@Body() cake: Cake) {
+    return await this.cakesService.createCake(cake);
   }
 }
