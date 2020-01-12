@@ -4,7 +4,10 @@
 
 #### Running the app
 
-`npm run start:api` also in parallel `npm run start:app`
+`npm run start:api` then in parallel: 
+
+`npm run start:app` for the web app 
+...or... `npm run start:pwa-app` for the PWA
 
 ### Tests
 
