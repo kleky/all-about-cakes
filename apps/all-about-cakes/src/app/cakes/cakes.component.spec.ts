@@ -3,6 +3,7 @@ import { CakesComponent } from './cakes.component';
 import { CakeService } from './cake.service';
 import { of } from 'rxjs';
 import { Cake } from '@cakes-ltd/api-interfaces';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 describe('CakesComponent', () => {
   let spectator: Spectator<CakesComponent>;
@@ -12,10 +13,12 @@ describe('CakesComponent', () => {
     name: 'name',
     comment: 'comment',
     yumFactor: 10
-  }]
+  }];
   const createComponent = createComponentFactory({
     component: CakesComponent,
-    providers: [mockProvider(CakeService, { getAll: () => of(cakes)})]
+    mocks: [Router, ActivatedRoute],
+    providers: [mockProvider(CakeService, { getAll: () => of(cakes)})],
+    imports: [RouterModule],
   });
 
   beforeEach(() => spectator = createComponent());

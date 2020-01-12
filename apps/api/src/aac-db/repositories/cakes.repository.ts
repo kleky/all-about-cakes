@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { DbService } from '../db.service';
-import { CakeEntity } from '../../../../../libs/entities/cake.entity';
-import { Cake } from '@cakes-ltd/api-interfaces';
+import { Cake, CakeEntity } from '@cakes-ltd/api-interfaces';
 import { InsertResult } from 'typeorm';
 
 @Injectable()

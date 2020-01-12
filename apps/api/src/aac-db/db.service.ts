@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Connection, ConnectionOptions, createConnection } from 'typeorm';
-import { CakeEntity } from '../../../../libs/entities/cake.entity';
 import { environment } from '../environments/environment';
+import { CakeEntity } from '@cakes-ltd/api-interfaces';
 
 @Injectable({
   providedIn: 'root'

@@ -10,15 +10,15 @@ import { CakeDetailsComponent } from './cake-details/cake-details.component';
 @NgModule({
   declarations: [CakesComponent, AddCakeComponent, CakeDetailsComponent],
   imports: [
+    CakesRoutingModule,
     CommonModule,
     DataStoreModule,
-    CakesRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     CakesComponent,
     AddCakeComponent,
     CakeDetailsComponent,
-  ]
+  ],
 })
 export class CakesModule { }
