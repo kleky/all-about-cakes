@@ -1,0 +1,13 @@
+
+<ng-container *ngIf="(cake | async) as cake else nothing">
+  <h2>{{cake.name}}</h2>
+
+  <h3>{{cake.comment}}</h3>
+
+</ng-container>
+<br>
+<button routerLink="/">Back to cakes</button>
+
+<ng-template #nothing>
+  Something went wrong and there's nothing to show
+</ng-template>

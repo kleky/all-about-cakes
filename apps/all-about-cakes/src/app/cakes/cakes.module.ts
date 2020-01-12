@@ -5,18 +5,20 @@ import { DataStoreModule } from '../store/data-store.module';
 import { AddCakeComponent } from './add-cake/add-cake.component';
 import { CakesRoutingModule } from './cakes-routing.module';
 import { FormsModule } from '@angular/forms';
+import { CakeDetailsComponent } from './cake-details/cake-details.component';
 
 @NgModule({
-  declarations: [CakesComponent, AddCakeComponent],
+  declarations: [CakesComponent, AddCakeComponent, CakeDetailsComponent],
   imports: [
+    CakesRoutingModule,
     CommonModule,
     DataStoreModule,
-    CakesRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     CakesComponent,
     AddCakeComponent,
-  ]
+    CakeDetailsComponent,
+  ],
 })
 export class CakesModule { }
