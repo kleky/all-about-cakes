@@ -44,7 +44,7 @@
     "@angular/service-worker": "^8.2.0",
     "@nestjs/common": "^6.8.3",
     "@nestjs/core": "^6.8.3",
-    "@nestjs/platform-express": "^6.8.3",
+    "@nestjs/platform-express": "^9.2.1",
     "@nestjs/typeorm": "^6.2.0",
     "@ngrx/data": "^8.6.0",
     "@ngrx/effects": "latest",
